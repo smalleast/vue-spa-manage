@@ -23,6 +23,7 @@
     "pc-sass-generator": "github:smalleast/pc-sass-generator",
     "quill": "^1.3.4",
     "svg-sprite-loader": "^3.2.4",
+    "uglify-js": "^3.3.7",
     "vue-avatar": "github:smalleast/vue-avatar",
     "vue-axios": "github:smalleast/vue-axios",
     "vue-quill-editor": "^3.0.4",
