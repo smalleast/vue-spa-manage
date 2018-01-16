@@ -1,0 +1,75 @@
+.button {
+  cursor: pointer;
+  &-primary {
+    width: 6.9rem;
+    height: .8rem;
+    margin: .3rem;
+    border-radius: .08rem;
+    color: rgb(255, 255, 255);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    transition: all .1s ease-in-out;
+    &:active {
+      opacity: .45;
+    }
+  }
+  &-cannel {
+    width: 2.25rem;
+    height: .78rem;
+    background: #bfbfbf;
+    border-radius: .08rem;
+    font-size: .3rem;
+    color: #fff;
+  }
+  &-submit {
+    width: 4.35rem;
+    height: .78rem;
+    background: #da5643;
+    border-radius: .08rem;
+    font-size: .3rem;
+    color: #fff;
+  }
+  &-tip {
+    background: #da5643;
+    border-top-left-radius: .2rem;
+    border-bottom-right-radius: .2rem;
+    padding: .1rem .2rem;
+  }
+  &-code {
+    width: 1.77rem;
+    height: .6rem;
+    text-align: center;
+    border: 1px solid #da5643;
+    color: #da5643;
+  }
+  &-x {
+    border: 1px solid #b5b5b5;
+    border-radius: .06rem;
+    padding: .06rem .2rem;
+    font-size: .22rem;
+    color: #777;
+  }
+  &-t {
+    background: #da5643;
+    border-radius: .06rem;
+    font-size: .22rem;
+    color: #fff;
+    display: inline-block;
+    padding: .1rem;
+  }
+  &.disabled, &[disabled] {
+    // background: #EFEFEF;
+    // color: #bfbfbf;
+    opacity: .45;
+  }
+  &.sm {
+    width: 1.2rem;
+  }
+  &.md {
+    width: 2.4rem;
+  }
+  &.lg {
+    width: 3rem;
+  }
+}

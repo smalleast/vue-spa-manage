@@ -1,0 +1,47 @@
+.db, .db_ > * {
+  display: block;
+}
+
+.dib, .dib_ > * {
+  display: inline-block;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.wp {
+  &-auto {
+    width: 6.9rem;
+    margin-left: auto;
+    margin-right: auto;
+    &-p {
+      width: 7.5rem;
+      padding: .3rem;
+    }
+  }
+  &-line {
+    &-x {
+      width: .88rem;
+      height: .04rem;
+      background: #da5643;
+      overflow: hidden;
+    }
+  }
+  &-bgf {
+    width: 7.5rem;
+    min-height: 13.34rem;
+    background: #fff;
+  }
+  &-item {
+    height: 1.16rem;
+    &.sm {
+      height: .88rem;
+    }
+  }
+  &-left {
+    &-w {
+      width: 1.6rem;
+    }
+  }
+}

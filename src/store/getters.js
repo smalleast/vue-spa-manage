@@ -1,0 +1,16 @@
+export default {
+    sidebar: state => state.app.sidebar,
+    defaultImg: state => state.app.defaultImg,
+    pagination: state => state.app.pagination,
+    permission_routers: state => state.permission.routers,
+    token: state => state.user.token,
+    name: state => state.user.name,
+    roles: state => state.user.roles,
+    avatar: state => state.user.avatar,
+    addRouters: state => state.permission.addRouters,
+    styleTypes: state => state.dictionaries.styleTypes,
+    projectTypes: state => state.dictionaries.projectTypes,
+    identityTypes: state => state.dictionaries.identityTypes,
+    projectStatusList: state => state.dictionaries.projectStatusList,
+    customerStatusList: state => state.dictionaries.customerStatusList,
+};
