@@ -1,141 +1,52 @@
 <template>
-    <section class="app">
-        <nav class="nav-top">
-            <el-row class="nav-row" type="flex" align="middle">
-                <el-col :span="21">
-                    <i class="zl-icon zl-icon-logo"></i><span class="system-name">逻辑分享家后台管理系统</span>
-                </el-col>
-                <el-col :span="1" align="middle">
-                    <i class="zl-icon zl-icon-message zl-icon-message-1"></i>
-                </el-col>
-                <el-col :span="1" align="middle">
-                    <i class="zl-icon zl-icon-message zl-icon-message-2"></i>
-                </el-col>
-                <el-col style="width: 83px;">
-
-                </el-col>
-
-            </el-row>
-            <el-dropdown class="avatar-container" trigger="click">
-                <div class="avatar-wrapper">
-                    {{this.$store.getters.name}}
-                    <i class="el-icon-caret-bottom"></i>
-                </div>
-                <el-dropdown-menu class="user-dropdown" slot="dropdown">
-                    <router-link class='inlineBlock' to="/">
-                        <el-dropdown-item>
-                            主页
-                        </el-dropdown-item>
-                    </router-link>
-                    <el-dropdown-item divided><span @click="logout" style="display:block;">退出登录</span></el-dropdown-item>
-                </el-dropdown-menu>
-            </el-dropdown>
-        </nav>
-        <transition name="fade" mode="out-in">
-            <router-view class="view"></router-view>
-        </transition>
-    </section>
-
+    <div id="app">
+        <router-view></router-view>
+        <div></div>
+    </div>
 </template>
-<script>
-    import {$api} from './components/vue/index';
-    import vueAvatar from 'vue-avatar';
 
+<script>
     export default {
         data() {
-            return {}
+            return {};
         },
-        methods: {
-            logout() {
-                $api.logout('get').then(() => {
-                    location.reload()  // 为了重新实例化vue-router对象 避免bug
-                })
-            }
+        created() {
+
         },
-        components: {
-            vueAvatar
-        },
-    }
+    };
 </script>
-<style type="text/scss" lang="scss">
-    .app {
+<style rel="stylesheet/scss" lang="scss">
+    //外部引用
+    @import "../node_modules/element-ui/lib/theme-default/index.css";
+    @import "assets/fonts/iconfont.css";
+    @import "../node_modules/flex-grid/dist/flex-grid.css";
+    @import "../node_modules/flex-sass/dist/flex-sass.css";
+    @import "../node_modules/pc-sass-generator/dist/pc-sass-generator.scss";
+    @import "components/styles/index.scss";
 
-        .nav {
+    html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #F6F7FB;;
+    }
 
-            &-top {
-                width: 100%;
-                height: 60px;
-                background: rgba(34, 34, 34, 1);
-                position: fixed;
-                left: 0;
-                top: 0;
-                z-index: 10;
-            }
+    a {
+        text-decoration: none;
+    }
 
-            &-row {
-                height: 60px;
-            }
+    .crumbs {
+        margin-bottom: 20px;
+    }
 
-            &-icon {
-                font-size: 24px;
-                color: #fff;
-            }
+    .el-upload {
+        width: 100%;
+        height: 100%;
 
-        }
-        .logo {
-            height: 26px;
-            margin-left: 22px;
-        }
-
-        .errLog-container {
-            display: inline-block;
-            position: absolute;
-            right: 150px;
-        }
-
-        .screenfull {
-            position: absolute;
-            right: 90px;
-            top: 16px;
-            color: red;
-        }
-
-        .avatar-container {
-            height: 50px;
-            display: inline-block;
-            position: absolute;
-            right: 35px;
-            top: 0;
-
-            .avatar-wrapper {
-                cursor: pointer;
-                margin-top: 10px;
-                position: relative;
-
-                .user-avatar {
-                    width: 40px;
-                    height: 40px;
-                    border-radius: 10px;
-                }
-
-                .el-icon-caret-bottom {
-                    position: absolute;
-                    right: -20px;
-                    top: 15px;
-                    font-size: 12px;
-                    color: #fff;
-                }
-
-            }
-        }
-        .system-name {
-            color: #fff;
-            font-size: 20px;
-            margin-left: 10px;
-            display: inline-block;
-            position: relative;
-            letter-spacing: 1px;
-            font-weight: 700;
+        .el-upload-dragger {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            background: transparent;
         }
 
     }

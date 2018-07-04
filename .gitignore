@@ -1,6 +1,9 @@
-node_modules
-bower_components
-coverage
 .idea
+.idea/
+.idea/workspace.xml
+.DS_Store
+node_modules/
 dist
+npm-debug.log
+git
 

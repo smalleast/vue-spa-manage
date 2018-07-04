@@ -1,6 +1,6 @@
 # vue-spa-manage
 ```
-分享家管理系统
+基于VUE前台管理页面
 ```
 
 ## 技术栈
@@ -52,7 +52,7 @@ npm run build  生产
 |       |-- services						                  // 所有跟服务器交互的js文件
 |       |-- store						                    // vuex公共数据存储
 |       |-- styles						                    // 全局公共样式
-|       |-- vue						                    // 全局公共组件
+|       |-- vue						                          // 全局公共组件
 |   |-- assets							                      // 公共静态文件、图片
 |   |-- modules							                      //	所有的页面
 |   |-- vendor								                    // 引用的公共插件

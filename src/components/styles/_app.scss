@@ -1,83 +1,190 @@
 * {
-  box-sizing: border-box;
-  font-size: .24rem;
-  margin: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    margin: 0;
+    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
 }
 
-body {
-  background: #fff;
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
 }
 
 input,
 textarea,
 button {
-  background: none;
-  border: none;
-  &:focus {
-    outline: none;
-  }
+    background: none;
+    border: none;
+    &:focus {
+        outline: none;
+    }
 }
 
 button {
-  user-select: none;
+    user-select: none;
 }
-img{
-  vertical-align: middle;
-  max-width:100%;
-  max-height:100%;
+
+img {
+    vertical-align: middle;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 figure {
-  margin: 0;
-  padding: 0;
-}
-
-.red-font {
-  color: #f00;
+    margin: 0;
+    padding: 0;
 }
 
 a {
-  text-decoration: none;
-  @extend .c-3;
-  &:hover, &:active, &:link {
-    @extend .c-9;
-  }
+    text-decoration: none;
+    @extend .c-3;
+    &:hover, &:active, &:link {
+        @extend .c-9;
+    }
 }
 
-.iconfont {
-  font-size: .3rem;
-  &.wx-arrow-left {
-    color: #ddd;
-  }
-  &.lg {
-    font-size: .52rem;
-  }
+.link {
+    color: #4d7cfe;
+    cursor: pointer;
+    &:hover, &:active {
+        color: #4d5ad8;
+    }
+    &-del {
+        color: #333;
+        cursor: pointer;
+        &:hover, &:active {
+            color: #ff4f4d;
+        }
+    }
 }
 
-input {
-  &.primary {
-    font-size: .3rem;
-    color: #373737;
-  }
+.item {
+    &-hover {
+        &:hover {
+            box-shadow: 0 2px 20px 0 #C6C7CC;
+            border: transparent;
+        }
+    }
+}
 
+.el-pagination {
+    text-align: center;
+}
+
+.el-tabs {
+    .el-tabs__item {
+        color: #373737;
+    }
+    &__active-bar {
+        height: 2px;
+        background-color: #4d7cfe;
+    }
+    &__header {
+        border-bottom: transparent;
+    }
 }
 
 .el {
-  &-select {
-    width: 100%;
-  }
-}
+    &-message-box {
+        &__title {
+            font-size: 24px;
+            color: #373737;
+            letter-spacing: 1px;
+            text-align: center;
+            height: auto;
+            margin-top: 35px;
+        }
+        &__content {
+            padding: 20px 50px;
+        }
+        &__message {
+            > p {
+                line-height: 26px;
+                color: #373737;
+                text-align: center;
+                font-size: 14px;
+            }
+        }
+        &__btns {
+            padding-bottom: 50px;
+            text-align: center;
+            .el-button {
+                &--primary {
+                    width: 240px;
+                    height: 50px;
+                    > span {
+                        font-size: 16px;
+                    }
+                    background-color: #4d7cfe;
+                    border-color: #4d7cfe;
+                    &:focus, &:hover {
+                        background: #008BFE;
+                        border-color: #008BFE;
+                        color: #fff
+                    }
 
-.avatar-name{
-  display:flex;
-  align-items:center;
-  justify-content: flex-start;
-  padding:10px 0;
-  .name{
-    margin-left:20px;
-  }
-  .avatar{
-    background-color:#c99;
-    border-radius:50%;
-  }
+                    &:active {
+                        background: #008BFE;
+                        border-color: #008BFE;
+                        color: #fff
+                    }
+                }
+
+            }
+        }
+        &-confirm {
+            .el {
+                &-message-box {
+                    &__message {
+                        > p {
+                            line-height: 26px;
+                            color: #373737;
+                            text-align: left;
+                            font-size: 14px;
+                        }
+                    }
+                    &__btns {
+                        padding-bottom: 50px;
+                        text-align: center;
+                        .el-button {
+                            width: 140px;
+                            height: 40px;
+                            > span {
+                                font-size: 14px;
+                            }
+                            & + .el-button {
+                                background-color: #4d7cfe;
+                                border-color: #4d7cfe;
+                                &:focus, &:hover {
+                                    background: #008BFE;
+                                    border-color: #008BFE;
+                                    color: #fff
+                                }
+
+                                &:active {
+                                    background: #008BFE;
+                                    border-color: #008BFE;
+                                    color: #fff
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &-loading-mask {
+        background-color: rgba(0, 0, 0, .3);
+    }
+    &-table {
+        &--enable-row-hover {
+            &.no-hover {
+                .el-table__body tr:hover > td {
+                    background-color: transparent;
+                    background-clip: padding-box
+                }
+            }
+        }
+    }
 }

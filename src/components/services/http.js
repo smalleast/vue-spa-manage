@@ -1,11 +1,10 @@
-import nxAxios from 'vue-axios';
-import Q from 'q';
-import nx from 'next-js-core2';
-import $store from 'vue-store';
-import router from '../../routes';
+import nxAxios from 'next-axios';
 import Config from './config';
-import {Message} from 'element-ui';
+import router from '../../router';
+import nxStore from 'next-store'
+import {Loading, Message} from 'element-ui'
 
+let load = null;
 const WeiPaiHttp = nx.declare({
     extends: nxAxios,
     statics: {
@@ -32,44 +31,71 @@ const WeiPaiHttp = nx.declare({
 
         },
         error: function (errorResponse) {
-            switch (errorResponse.status_code) {
+            this.clearLoad();
+            console.log(String(errorResponse));
+            if (errorResponse.response) {
+                return Promise.reject(errorResponse.response.data)   // 返回接口返回的错误信息
+            } else {
+                let errorMsg = String(errorResponse);
+                if (errorMsg.includes('Error: timeout')) {
+                    console.log('请求超时,请稍后刷新');
+                } else if (errorMsg.includes('Network Error')) {
+                    console.log('网络出错了,请稍后刷新');
+                } else {
+                    console.log('出错了,稍后刷新试试');
+                }
+            }
+        },
+        toData: function (inResponse) {
+           this.clearLoad();
+
+            switch (inResponse && inResponse.data && inResponse.data.status_code) {
                 case 401:
-                    // Message.error('登录已失效');
-                    // $store.clear('token');
+                    console.log('登录已失效401');
+                    nxStore.clear('token');
                     console.log(router.currentRoute.path);
-                    if(router.currentRoute.path!=='/login/'){
+                    if (router.currentRoute.path !== '/login/') {
                         router.replace({
                             path: '/login/',
                             query: {redirect: router.currentRoute.fullPath}
                         });
                     }
-                    break;
+                    return Promise.reject(inResponse.data);
                 case 400:
-                    Message.error(errorResponse.message);
-                    break;
+                    Message.warning(inResponse.data.message);
+                    return Promise.reject(inResponse);
+                case 500:
+                    Message.warning('服务器出错了,稍后再试');
+                    return Promise.reject(inResponse);
+                case 200:
+                    return inResponse.data.data;
                 default:
-                    Message.error('服务器错误');
-                    break;
-            }
-            return Promise.reject(errorResponse);
-        },
-        success: function (inResponse) {
-            if (inResponse.data.status_code === 200) {
-                return this.toData(inResponse);
-            } else {
-                return this.error(inResponse.data);
+                    return inResponse.data;
             }
         },
-        toData: function (inResponse) {
-            return inResponse.data;
+        authorization: function (inRequest) {
+            const {nxloading, token} = nxStore.local;
+            if (nxloading === 1) {
+                load = Loading.service();
+            }
+            if (token) {
+                inRequest.headers.common['Authorization'] = token.accessToken;
+            }
+            return inRequest;
         },
-        //authorization: function (inRequest) {
-        /* const {token} = $store.local;
-         if (token) {
-         inRequest.headers.common['Authorization'] = token;
-         }*/
-        //   return inRequest;
-        // }
+        clearLoad:function () {
+            nxStore.clear('nxloading');
+
+            if (typeof load === 'object') {
+                setTimeout(() => {
+                    try {
+                        load.close();
+                    } catch (e) {
+                        console.log('load:', e);
+                    }
+                }, 300);
+            }
+        }
     }
 });
 
