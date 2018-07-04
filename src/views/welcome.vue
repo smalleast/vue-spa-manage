@@ -1,5 +1,5 @@
 <template>
-    <img src="../../static/img/welcome.png" alt="">
+    <img src="../../static/image/welcome.png" alt="">
 </template>
 
 <script>
